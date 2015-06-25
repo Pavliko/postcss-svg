@@ -30,8 +30,9 @@ Can define relative path to folders with SVG files.
 ###For live example run
 
 ```bash
-npm install postcss-svg && cd $(npm root)/postcss-svg/ && node example/script.js
+npm install postcss-svg && cd $(npm root)/postcss-svg/ && npm install && node example/script.js
 ```
+
 ###Example source code
 *example/script.js:*
 

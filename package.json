@@ -28,10 +28,12 @@
     "url": "https://github.com/Pavliko/postcss-svg/issues"
   },
   "homepage": "https://github.com/Pavliko/postcss-svg#readme",
+  "dependencies": {
+    "dot": "^1.0.3",
+    "postcss": "^4.1.13"
+  }
   "devDependencies": {
     "coffee-script": "^1.9.3",
-    "dot": "^1.0.3",
-    "open": "0.0.5",
-    "postcss": "^4.1.13"
+    "open": "0.0.5"
   }
 }
