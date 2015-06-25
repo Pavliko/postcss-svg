@@ -21,16 +21,19 @@ postcss(processors)
     fs.writeFileSync('./dist/app.css', result.css);
   });
 ```
-##Options
-###paths
+
+## Options
+
+### paths
 Type: `Array` Default: `['svg']` Example: `['pathToSVGDir1', 'pathToSVGDir2']` Required: `false`
 
 Can define relative path to folders with SVG files.
+
 ## Example
 To look result, click [index.html](http://pavliko.github.io/postcss-svg/)
 
 
-###Example [source](https://github.com/Pavliko/postcss-svg/tree/master/example)
+### Example [source](https://github.com/Pavliko/postcss-svg/tree/master/example)
 *example/script.js:*
 
 ```javascript
@@ -119,14 +122,14 @@ body:before {
 </html>
 ```
 
-###To run on your computer:
+### To run on your computer:
 
 ```bash
 npm install postcss-svg && cd $(npm root)/postcss-svg/ && npm install && node example/script.js
 ```
 
-##Contributing
+## Contributing
 Pull requests are welcome.
 
-##License
+## License
 MIT
