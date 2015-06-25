@@ -1,5 +1,5 @@
 # postcss-svg
-[PostCSS](https://github.com/postcss/postcss) plugin that insert inline SVG
+[PostCSS](https://github.com/postcss/postcss) plugin that insert inline SVG.
 
 ## Install
 ```bash
@@ -95,6 +95,8 @@ body:before {
 ```
 
 *example/loupe.svg:*
+
+You can use features from [doT](http://olado.github.io/doT/) template engine.
 
 ```xml
 <svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
