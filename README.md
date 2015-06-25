@@ -27,13 +27,10 @@ Type: `Array` Default: `['svg']` Example: `['pathToSVGDir1', 'pathToSVGDir2']` R
 
 Can define relative path to folders with SVG files.
 ## Example
-###For live example run
+To look result, click [index.html](http://pavliko.github.io/postcss-svg/)
 
-```bash
-npm install postcss-svg && cd $(npm root)/postcss-svg/ && npm install && node example/script.js
-```
 
-###Example source code
+###Example [source](https://github.com/Pavliko/postcss-svg/tree/master/example)
 *example/script.js:*
 
 ```javascript
@@ -120,6 +117,12 @@ body:before {
   </head>
   <body></body>
 </html>
+```
+
+###To run on your computer:
+
+```bash
+npm install postcss-svg && cd $(npm root)/postcss-svg/ && npm install && node example/script.js
 ```
 
 ##Contributing
