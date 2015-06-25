@@ -128,6 +128,11 @@ body:before {
 npm install postcss-svg && cd $(npm root)/postcss-svg/ && npm install && node example/script.js
 ```
 
+## Roadmap
+- svgo support
+- gulp plugin
+- javascript color managment for SVG
+
 ## Contributing
 Pull requests are welcome.
 
