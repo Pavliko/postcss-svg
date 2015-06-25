@@ -31,7 +31,7 @@
   "dependencies": {
     "dot": "^1.0.3",
     "postcss": "^4.1.13"
-  }
+  },
   "devDependencies": {
     "coffee-script": "^1.9.3",
     "open": "0.0.5"
