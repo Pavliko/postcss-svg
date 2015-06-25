@@ -1,0 +1,37 @@
+{
+  "name": "postcss-svg",
+  "version": "0.0.1",
+  "description": "Postcss plugin for insert inline SVG to CSS",
+  "main": "index.js",
+  "scripts": {
+    "example": "npm run coffee && node example/script.js",
+    "coffee": "node_modules/coffee-script/bin/coffee -c index.coffee"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pavliko/postcss-svg.git"
+  },
+  "keywords": [
+    "postcss",
+    "plugin",
+    "svg",
+    "inline",
+    "colorize",
+    "color",
+    "css",
+    "image",
+    "background"
+  ],
+  "author": "Pavel Gorlov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Pavliko/postcss-svg/issues"
+  },
+  "homepage": "https://github.com/Pavliko/postcss-svg#readme",
+  "devDependencies": {
+    "coffee-script": "^1.9.3",
+    "dot": "^1.0.3",
+    "open": "0.0.5",
+    "postcss": "^4.1.13"
+  }
+}

@@ -1,0 +1,18 @@
+body {
+  height: 100%;
+  width: 100%;
+  background-image: svg("loupe");
+  background-size: 20px;
+}
+
+body:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50vh;
+  height: 50vh;
+  background: svg("loupe", "frameColor: #7D7779; handleColor: #9E4200;") no-repeat;
+  margin-left: -25vh;
+  margin-top: -25vh;
+}
