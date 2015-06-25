@@ -70,6 +70,20 @@ body:before {
 }
 
 ```
+
+*example/loupe.svg:*
+
+You can use features from [doT](http://olado.github.io/doT/) template engine.
+
+```xml
+<svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
+  <path d="M12 12L8 8" stroke-linecap="square" stroke-width="2" stroke="{{=it.handleColor || '#000000'}}"/>
+  <circle cx="5" cy="5" fill="rgba(15, 100, 250, .15)" r="4" stroke-width="2" stroke="{{=it.frameColor || '#000000'}}"/>
+</svg>
+
+
+```
+
 ***example/output.css:***
 
 ```css
@@ -91,19 +105,6 @@ body:before {
   margin-left: -25vh;
   margin-top: -25vh;
 }
-
-```
-
-*example/loupe.svg:*
-
-You can use features from [doT](http://olado.github.io/doT/) template engine.
-
-```xml
-<svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
-  <path d="M12 12L8 8" stroke-linecap="square" stroke-width="2" stroke="{{=it.handleColor || '#000000'}}"/>
-  <circle cx="5" cy="5" fill="rgba(15, 100, 250, .15)" r="4" stroke-width="2" stroke="{{=it.frameColor || '#000000'}}"/>
-</svg>
-
 
 ```
 
