@@ -1,19 +1,163 @@
 body {
-  height: 100%;
-  width: 100%;
-  background-image: svg("loupe");
-  background-size: 3vh;
-  background-position: 50vw 50vh;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  color: #333333;
 }
 
-body:before {
+main {
+  max-width: 1024px;
+  min-height: 100vh;
+  margin: auto;
+  padding: 0 10px;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+}
+
+header h1 {
+  position: relative;
+  outline: 10px solid #F7F7F7;
+  background: #F7F7F7;
+  box-shadow: 0 1px 0 10px #ddd;
+  line-height: 50px;
+  padding-top: 5px;
+}
+
+header h1 a {
+  position: absolute;
+  right: 0;
+  margin-right: 40px;
+  font-size: 14px;
+  font-weight: 300;
+  color: #333333;
+  text-decoration: none;
+}
+
+header h1 a:hover {
+  text-decoration: underline;
+}
+
+header h1 a:after {
+  position: absolute;
+  display: inline-block;
+  content: '';
+  width: 50px;
+  height: 50px;
+  content: svg("ei#sc-github", "[fill]: black");
+}
+
+header ul {
+  list-style: none;
+  margin-top: 10px;
+}
+
+header ul li {
+  position: relative;
+  line-height: 25px;
+}
+
+header ul li:before{
+  position: absolute;
+  display: block;
+  content: '';
+  width: 25px;
+  height: 25px;
+  background: svg("ei#check");
+  left: -25px;
+  top: 0;
+}
+
+header ul li:last-child:before {
+  content: none;
+}
+
+header ul li:last-child i {
+  position: absolute;
+  display: block;
+  content: svg("ei#like", "[fill]: #46629E");
+  width: 25px;
+  height: 25px;
+  left: -25px;
+  top: 0;
+}
+
+h1, h2, pre {
+  margin: 0;
+}
+
+code {
+  background-color: #F7F7F7;
+  padding: 2px 5px;
+  font-weight: 300;
+}
+
+pre {
+  margin-top: 3px;
+}
+
+pre.inline {
+  display: inline-block;
+}
+
+dl dt {
+  font-weight: 700;
+}
+
+dl dd {
+  margin-left: 10px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+dl dd p {
+  margin: 5px 0;
+  font-weight: 300;
+}
+
+pre.example {
+  padding-left: 55px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+pre.example:before {
   content: '';
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 50vh;
-  height: 50vh;
-  margin-left: -25vh;
-  margin-top: -25vh;
-  background: svg("loupe", "frameColor: #7D7779; handleColor: #9E4200;") no-repeat;
+  width: 48px;
+  height: 70px;
+  background-repeat: no-repeat;
+  background-position: center;
+  left: 0;
+  top: 0;
+}
+
+.simple-inline:before {
+  background-image: svg("loupe");
+}
+
+.color:before {
+  background-image: svg("loupe", "[color]: red");
+}
+
+.fill-stroke:before {
+  background-image: svg("loupe", "[fill]: rgba(105, 200, 250, .2); [stroke]: brown");
+}
+
+.tag-name:before {
+  background-image: svg("loupe", "circle[fill]: rgba(105, 200, 250, .2); circle[stroke]: gray; path[stroke]: brown;");
+}
+
+.class-name:before {
+  background-image: svg("loupe", ".glass[fill]: rgba(105, 200, 250, .2);");
+}
+
+.color-group:before {
+  background-image: svg("loupe", "colorGroup0: red; colorGroup1: blue;");
+}
+
+.identifier:before {
+  background-image: svg("loupe", "#rim[fill]: rgba(105, 200, 250, .2); #rim[stroke]: gray; #handle[stroke]: brown;");
+}
+
+.color-index:before {
+  background-image: svg("loupe", "color0: rgba(105, 200, 250, .2); color1: gray; color2: brown;");
 }

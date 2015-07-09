@@ -1,12 +1,8 @@
 {
   "name": "postcss-svg",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "Postcss plugin for insert inline SVG to CSS",
-  "main": "index.js",
-  "scripts": {
-    "example": "npm run coffee && node example/script.js",
-    "coffee": "node_modules/coffee-script/bin/coffee -c index.coffee"
-  },
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Pavliko/postcss-svg.git"
@@ -20,7 +16,8 @@
     "color",
     "css",
     "image",
-    "background"
+    "background",
+    "postcss-plugin"
   ],
   "author": "Pavel Gorlov",
   "license": "MIT",
@@ -29,11 +26,22 @@
   },
   "homepage": "https://github.com/Pavliko/postcss-svg#readme",
   "dependencies": {
+    "color": "^0.9.0",
     "dot": "^1.0.3",
-    "postcss": "^4.1.13"
+    "evil-icons": "^1.7.6",
+    "lodash": "^3.9.3",
+    "postcss": "^4.1.13",
+    "svgo": "^0.5.3",
+    "xmldom": "^0.1.19"
   },
   "devDependencies": {
-    "coffee-script": "^1.9.3",
+    "autoprefixer-core": "^5.2.1",
+    "gulp": "^3.9.0",
+    "gulp-coffee": "^2.3.1",
+    "gulp-livereload": "^3.8.0",
+    "gulp-load-plugins": "^1.0.0-rc.1",
+    "gulp-postcss": "^5.1.9",
+    "gulp-rename": "^1.2.2",
     "open": "0.0.5"
   }
 }
