@@ -73,7 +73,7 @@ header ul li:last-child:before {
 header ul li:last-child i {
   position: absolute;
   display: block;
-  content: svg("ei#like", "[fill]: #46629E");
+  background: svg("ei#like", "[fill]: #46629E");
   width: 25px;
   height: 25px;
   left: -25px;
