@@ -1,5 +1,5 @@
 #[postcss-svg](http://pavliko.github.io/postcss-svg/)
-[PostCSS](https://github.com/postcss/postcss) plug-in which to insert a built-in SVG and allows you to manage it colors.
+[PostCSS](https://github.com/postcss/postcss) plug-in which to insert inline SVG to CSS and allows you to manage it colors.
 Examples [here](http://pavliko.github.io/postcss-svg/#examples)
 
 **Features:**
