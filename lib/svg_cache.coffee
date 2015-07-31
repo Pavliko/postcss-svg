@@ -5,7 +5,7 @@ fs = require('fs')
 
 module.exports =
   defaultPaths: ['svg']
-  
+
   init: (options) ->
     debug = _.isBoolean(options.debug) && options.debug
     options.svgo ||= false
@@ -21,15 +21,16 @@ module.exports =
           postfix: '-icon'
           prefix: 'ei-'
 
-    svgOptions = _.pick options, 'defaults', 'svgo'
+    @svgOptions = _.pick options, 'defaults', 'svgo'
+    @paths = options.paths || @defaultPaths
 
-    for myPath in (options.paths || @defaultPaths)
+    for myPath in @paths
       if fs.existsSync(myPath)
         stat = fs.statSync(myPath)
         if stat.isDirectory()
-          @addToIndex("#{myPath}#{path.sep}#{filename}", svgOptions) for filename in fs.readdirSync(myPath)
+          @addToIndex("#{myPath}#{path.sep}#{filename}", @svgOptions) for filename in fs.readdirSync(myPath)
         else
-          @addToIndex(myPath, svgOptions) if stat.isFile()
+          @addToIndex(myPath, @svgOptions) if stat.isFile()
     console.timeEnd('Index generation') if debug
 
   addToIndex: (filePath, options = {}) ->
@@ -45,20 +46,25 @@ module.exports =
         else
           error: true
           livel: 'Warning'
-          getMessage: -> "You have some files with this basename: #{@paths.join(', ')}"
+          getMessage: -> "You have some files with this basename: #{@filesIndex[basename].paths.join(', ')}"
           paths: [@filesIndex[basename].path, svg.path]
       else
         @filesIndex[basename] = @filesIndex[basenameWithExt] = svg
 
       @filesIndex[filePath] = @filesIndex[filePath[0..-5]] = svg
 
-  get: (identifier)->
+  get: (identifier, second = false)->
     [link, ids...] = identifier.split('#')
-    # console.log Object.keys(@filesIndex), "#{link}", ids, @filesIndex[link]
+
     if svg = @filesIndex[link]
       if svg.error
         throw svg.getMessage()
       else
         svg.svgFor(ids)
     else
-      throw "'#{link}' not found in SVG csche"
+      if second
+        throw "'#{link}' not found in SVG csche (paths: #{@paths.join(', ')})"
+      else
+        identifier = (if identifier.indexOf('.svg') == -1 then "#{identifier}.svg" else identifier)
+        @addToIndex identifier, @svgOptions
+        @get(identifier, true)

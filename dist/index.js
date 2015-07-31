@@ -9,12 +9,13 @@
   _ = require('lodash');
 
   module.exports = postcss.plugin("postcss-svg", function(options) {
-    var SVGRegExp, funcName, silent;
+    var SVGRegExp, funcName, replaceRegExp, silent;
     if (options == null) {
       options = {};
     }
     funcName = options.func || 'svg';
     SVGRegExp = new RegExp(funcName + "\\(\"([^\"]+)\"(,\\s*\"([^\"]+)\")?\\)");
+    replaceRegExp = new RegExp(funcName + "\\((\"[^\"]+\"|\'[^\']+\')(,\\s*(\"[^\"]+\"|\'[^\']+\'))?\\)");
     silent = _.isBoolean(options.silent) ? options.silent : true;
     if (options.debug) {
       silent = false;
@@ -22,13 +23,12 @@
     return function(style) {
       SVGCache.init(options);
       return style.eachDecl(/^background|^filter|^content|image$/, function(decl) {
-        var args, error, matches, name, params, replace, svg;
+        var ___, error, matches, name, params, replace, svg;
         if (!decl.value) {
           return;
         }
         if (matches = SVGRegExp.exec(decl.value.replace(/'/g, '"'))) {
-          replace = matches[0], args = 2 <= matches.length ? slice.call(matches, 1) : [];
-          name = args[0], params = 2 <= args.length ? slice.call(args, 1) : [];
+          ___ = matches[0], name = matches[1], params = 3 <= matches.length ? slice.call(matches, 2) : [];
           if (options.debug) {
             console.time("Render svg " + name);
           }
@@ -36,13 +36,16 @@
             svg = SVGCache.get(name);
           } catch (_error) {
             error = _error;
-            if (!silent) {
+            if (silent) {
+              console.info("postcss-svg: " + error);
+            } else {
               throw decl.error(error);
             }
           }
           if (!svg) {
             return;
           }
+          replace = replaceRegExp.exec(decl.value)[0];
           decl.value = decl.value.replace(replace, svg.dataUrl(params[1]));
           if (options.debug) {
             console.timeEnd("Render svg " + name);
