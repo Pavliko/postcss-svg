@@ -1,4 +1,4 @@
-### 1.0.1 - 2015-07-10
+### 1.0.1 - 2015-07-31
 
 Fix some issues:
 * [Raise a error on unknown file](https://github.com/Pavliko/postcss-svg/issues/7)
