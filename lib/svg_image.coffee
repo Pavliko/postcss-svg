@@ -61,7 +61,7 @@ class SVGImage
     @_checkSVG(doc)
     doc = new xmldom.XMLSerializer().serializeToString(doc)
 
-    @template =  doT.template(doc)
+    @template =  doT.template(doc, _.extend({ strip: false }, doT.templateSettings))
 
   _checkSVG: (doc) ->
     if !(Object.keys(@colors).length > 0)
