@@ -103,7 +103,9 @@
       })(this));
       this._checkSVG(doc);
       doc = new xmldom.XMLSerializer().serializeToString(doc);
-      return this.template = doT.template(doc);
+      return this.template = doT.template(doc, _.extend(doT.templateSettings, {
+        strip: false
+      }));
     };
 
     SVGImage.prototype._checkSVG = function(doc) {
