@@ -14,7 +14,7 @@ module.exports = postcss.plugin "postcss-svg", (options = {}) ->
 
     style.eachDecl /^background|^filter|^content|image$/, (decl) ->
       return unless decl.value
-      if matches = SVGRegExp.exec(decl.value.replace(/'/g, '"'))
+      while matches = SVGRegExp.exec(decl.value.replace(/'/g, '"'))
         [___, name, params...] = matches
         console.time ("Render svg #{name}") if options.debug
         try
@@ -28,4 +28,4 @@ module.exports = postcss.plugin "postcss-svg", (options = {}) ->
         replace = replaceRegExp.exec(decl.value)[0]
         decl.value = decl.value.replace replace, svg.dataUrl(params[1])
         console.timeEnd ("Render svg #{name}") if options.debug
-        return
+      return

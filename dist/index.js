@@ -27,7 +27,7 @@
         if (!decl.value) {
           return;
         }
-        if (matches = SVGRegExp.exec(decl.value.replace(/'/g, '"'))) {
+        while (matches = SVGRegExp.exec(decl.value.replace(/'/g, '"'))) {
           ___ = matches[0], name = matches[1], params = 3 <= matches.length ? slice.call(matches, 2) : [];
           if (options.debug) {
             console.time("Render svg " + name);

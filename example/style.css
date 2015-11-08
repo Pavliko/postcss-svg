@@ -147,7 +147,7 @@ pre.example:before {
 }
 
 .class-name:before {
-  background-image: svg("loupe", ".glass[fill]: rgba(105, 200, 250, .2);");
+  background-image: svg("loupe", ".glass[fill]: rgba(105, 200, 250, .2);"), svg("loupe", "[stroke]: brown;");
 }
 
 .color-group:before {

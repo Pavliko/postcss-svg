@@ -147,7 +147,7 @@ pre.example:before {
 }
 
 .class-name:before {
-  background-image: url("data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2014%2014%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M12%2012L8%208%22%20stroke%3D%22%23000%22%20stroke-linecap%3D%22round%22%20stroke-width%3D%222%22%2F%3E%3Ccircle%20class%3D%22glass%22%20cx%3D%225%22%20cy%3D%225%22%20fill%3D%22rgba(105%2C200%2C250%2C.2)%22%20r%3D%224%22%20stroke-width%3D%222%22%20stroke%3D%22%23000%22%2F%3E%3C%2Fsvg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2014%2014%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M12%2012L8%208%22%20stroke%3D%22%23000%22%20stroke-linecap%3D%22round%22%20stroke-width%3D%222%22%2F%3E%3Ccircle%20class%3D%22glass%22%20cx%3D%225%22%20cy%3D%225%22%20fill%3D%22rgba(105%2C200%2C250%2C.2)%22%20r%3D%224%22%20stroke-width%3D%222%22%20stroke%3D%22%23000%22%2F%3E%3C%2Fsvg%3E"), url("data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2014%2014%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M12%2012L8%208%22%20stroke%3D%22brown%22%20stroke-linecap%3D%22round%22%20stroke-width%3D%222%22%2F%3E%3Ccircle%20class%3D%22glass%22%20cx%3D%225%22%20cy%3D%225%22%20fill%3D%22none%22%20r%3D%224%22%20stroke-width%3D%222%22%20stroke%3D%22brown%22%2F%3E%3C%2Fsvg%3E");
 }
 
 .color-group:before {
