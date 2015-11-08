@@ -22,7 +22,7 @@
     }
     return function(style) {
       SVGCache.init(options);
-      return style.eachDecl(/^background|^filter|^content|image$/, function(decl) {
+      return style.walkDecls(/^background|^filter|^content|image$/, function(decl) {
         var ___, error, matches, name, params, replace, svg;
         if (!decl.value) {
           return;
