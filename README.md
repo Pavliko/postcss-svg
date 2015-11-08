@@ -1,4 +1,4 @@
-#[postcss-svg](http://pavliko.github.io/postcss-svg/)
+# [postcss-svg](http://pavliko.github.io/postcss-svg/)
 [PostCSS](https://github.com/postcss/postcss) plug-in which to insert inline SVG to CSS and allows you to manage it colors.
 Examples [here](http://pavliko.github.io/postcss-svg/#examples)
 
@@ -10,13 +10,13 @@ Examples [here](http://pavliko.github.io/postcss-svg/#examples)
 * Compression with svgo
 * Support Evil Icons from box
 
-##Installation
+## Installation
 
 ```bash
 npm install postcss-svg --save-dev
 ```
 
-##Usage
+## Usage
 PostCSS:
 
 ```javascript
@@ -74,42 +74,42 @@ body {
 }
 ```
 
-##Options
-####paths
+## Options
+#### paths
 Type: `Array` Default: `['svg']` Example: `['pathToSVGDir1', 'pathToSVGDir2']` Required: `false`
 
 You can define relative path to folders with SVG files.
 
-####func
+#### func
 Type: `String` Default: 'svg' Example: 'url' Required: `false`
 
 You can set func option to 'url' to support fallback to url("*.svg") links.
 
-####svgo
+#### svgo
 Type: `Boolean`, `Object` Default: `false` Example: `true` Required: `false`
 
 You can set custom config for svgo module. Recommend to set true only for production build.
 
-####defaults
+#### defaults
 Type: `String` Default: `''` Example: `'[fill]: #00F800; .glass[fill]: rgba(0, 0, 255, 0.1);'` Required: `false`
 
 You can set default rules for all included SVG
 
-####ei
+#### ei
 Type: `Boolean`, `Object` Default: `true` Example: `{ "dfaults": "[fill]: red" }` Required: `false`
 
 You can set false to disable initializing Evil Icons. Or you can set different defaults only for Evil Icons.
 
-####debug
+#### debug
 Type: `Boolean` Default: `false` Required: `false`
 
 You can set false to disable initializing Evil Icons. Or you can set different defaults only for Evil Icons.
 
-####silent
+#### silent
 Type: `Boolean` Default: `true` Required: `false`
 Do not throw errors
 
-##Colors API
+## Colors API
 You can replace only **existing** values of `fill` and `stroke` attributes.
 
 To replace colors you can use simple selectors.
@@ -120,24 +120,24 @@ In the bottom you can see this selectors in ascending order.
 
 For better understanding of selectors check [examples](http://pavliko.github.io/postcss-svg/#examples).
 
-###Selectors:
+### Selectors:
 
-####[color]
+#### [color]
 All `fill` and `stroke` attributes
-####[fill]|[stroke]
+#### [fill]|[stroke]
 All `fill` or `stroke` attributes
-####tagName[fill]|tagName[stroke]
+#### tagName[fill]|tagName[stroke]
 `fill` or `stroke` tag attributes with name tagName
-####.className[fill]|.className[stroke]
+#### .className[fill]|.className[stroke]
 `fill` or `stroke` tag attributes with class className
-####colorGroupN
+#### colorGroupN
 All colors in SVG are grouped in color groups. N - group index, starts from 0 (from the top of SVG document)
-####\#identifier[fill]|\#identifier[stroke]
+#### \#identifier[fill]|\#identifier[stroke]
 `fill` or `stroke` tag attributes with id identifier
-####colorN
+#### colorN
 All colors in SVG have index. N - index, starts from 0 (from the top of SVG document)
 
-##[Examples](http://pavliko.github.io/postcss-svg/#examples)
+## [Examples](http://pavliko.github.io/postcss-svg/#examples)
 
 ## Contributing
 Pull requests are welcome.

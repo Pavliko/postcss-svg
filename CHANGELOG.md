@@ -1,4 +1,8 @@
-### 1.0.1 - 2015-11-08
+### 1.0.3 - 2015-11-08
+
+Fix multiple svg in one decl (https://github.com/Pavliko/postcss-svg/issues/19)
+
+### 1.0.2 - 2015-11-08
 
 Update to PostCSS 5
 
