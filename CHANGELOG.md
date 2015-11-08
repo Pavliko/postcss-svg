@@ -1,3 +1,7 @@
+### 1.0.1 - 2015-11-08
+
+Update to PostCSS 5
+
 ### 1.0.1 - 2015-07-31
 
 Fix some issues:
