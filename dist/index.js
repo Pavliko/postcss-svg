@@ -20,9 +20,9 @@
     if (options.debug) {
       silent = false;
     }
-    return function(style) {
+    return function(style, result) {
       SVGCache.init(options);
-      return style.eachDecl(/^background|^filter|^content|image$/, function(decl) {
+      return style.walkDecls(/^background|^filter|^content|image$/, function(decl) {
         var ___, error, matches, name, params, replace, svg;
         if (!decl.value) {
           return;
@@ -37,7 +37,7 @@
           } catch (_error) {
             error = _error;
             if (silent) {
-              console.info("postcss-svg: " + error);
+              decl.warn(result, "postcss-svg: " + error);
             } else {
               throw decl.error(error);
             }
