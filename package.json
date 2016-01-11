@@ -26,22 +26,22 @@
   },
   "homepage": "https://github.com/Pavliko/postcss-svg#readme",
   "dependencies": {
-    "color": "^0.10.1",
-    "dot": "^1.0.3",
-    "evil-icons": "^1.7.8",
-    "lodash": "^3.10.1",
-    "postcss": "^5.0.10",
-    "svgo": "^0.5.6",
-    "xmldom": "^0.1.19"
+    "color": "0.10.1",
+    "dot": "1.0.3",
+    "evil-icons": "1.7.8",
+    "lodash": "3.10.1",
+    "postcss": "5.0.10",
+    "svgo": "0.5.6",
+    "xmldom": "0.1.19"
   },
   "devDependencies": {
-    "autoprefixer-core": "^6.0.1",
-    "gulp": "^3.9.0",
-    "gulp-coffee": "^2.3.1",
-    "gulp-livereload": "^3.8.1",
-    "gulp-load-plugins": "^1.1.0",
-    "gulp-postcss": "^6.0.1",
-    "gulp-rename": "^1.2.2",
+    "autoprefixer-core": "6.0.1",
+    "gulp": "3.9.0",
+    "gulp-coffee": "2.3.1",
+    "gulp-livereload": "3.8.1",
+    "gulp-load-plugins": "1.1.0",
+    "gulp-postcss": "6.0.1",
+    "gulp-rename": "1.2.2",
     "open": "0.0.5"
   }
 }
