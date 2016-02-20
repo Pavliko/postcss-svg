@@ -60,6 +60,22 @@
       return "url(\"data:image/svg+xml," + (encodeURIComponent(svg)) + "\")";
     };
 
+    SVGImage.prototype.toBase64DataUri = function(params) {
+      var svg;
+      if (params == null) {
+        params = {};
+      }
+      if (_.isString(params)) {
+        params = this._parseStyle(params);
+      }
+      params = _.extend({}, this.defaults, params);
+      svg = this.template(params);
+      if (this.svgo) {
+        svg = this._svgoSync(svg);
+      }
+      return "url(\"data:image/svg+xml;base64," + (new Buffer(svg).toString('base64')) + "\")";
+    };
+
     SVGImage.prototype._svgoSync = function(svgString) {
       var result;
       result = false;
@@ -205,7 +221,7 @@
     };
 
     SVGImage.prototype._addColor = function(type, attributes, node) {
-      var base, color, key, selectors, typeSelector;
+      var base, color, error, key, selectors, typeSelector;
       try {
         color = attributes[type].value === 'none' ? Color('rgba(255, 255, 255, 0)') : Color(attributes[type].value);
         typeSelector = "[" + type + "]";
@@ -233,7 +249,7 @@
           return "it[\'" + selector + "\']";
         });
         return node.attributes[attributes[type].index].value = "{{= " + (selectors.join(' || ')) + " || \'" + attributes[type].value + "\'}}";
-      } catch (_error) {
+      } catch (error) {
 
       }
     };
