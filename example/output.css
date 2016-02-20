@@ -61,7 +61,7 @@ header ul li:before{
   content: '';
   width: 25px;
   height: 25px;
-  background: url("data:image/svg+xml,%3Csvg%20id%3D%22ei-check-icon%22%20viewBox%3D%220%200%2050%2050%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20style%3D%22fill%3Agreen%3B%22%20height%3D%22%22%20width%3D%22%22%3E%3Cpath%20d%3D%22M25%2042c-9.4%200-17-7.6-17-17S15.6%208%2025%208s17%207.6%2017%2017-7.6%2017-17%2017zm0-32c-8.3%200-15%206.7-15%2015s6.7%2015%2015%2015%2015-6.7%2015-15-6.7-15-15-15z%22%2F%3E%3Cpath%20d%3D%22M23%2032.4l-8.7-8.7%201.4-1.4%207.3%207.3%2011.3-11.3%201.4%201.4z%22%2F%3E%3C%2Fsvg%3E");
+  background: url("data:image/svg+xml,%3Csvg%20id%3D%22ei-check-icon%22%20viewBox%3D%220%200%2050%2050%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20style%3D%22%22%20height%3D%22%22%20width%3D%22%22%3E%3Cpath%20d%3D%22M25%2042c-9.4%200-17-7.6-17-17S15.6%208%2025%208s17%207.6%2017%2017-7.6%2017-17%2017zm0-32c-8.3%200-15%206.7-15%2015s6.7%2015%2015%2015%2015-6.7%2015-15-6.7-15-15-15z%22%2F%3E%3Cpath%20d%3D%22M23%2032.4l-8.7-8.7%201.4-1.4%207.3%207.3%2011.3-11.3%201.4%201.4z%22%2F%3E%3C%2Fsvg%3E");
   left: -25px;
   top: 0;
 }
