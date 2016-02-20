@@ -1,6 +1,5 @@
 (function() {
-  var SVGCache, _, postcss,
-    slice = [].slice;
+  var SVGCache, _, postcss;
 
   postcss = require('postcss');
 
@@ -23,19 +22,19 @@
     return function(style, result) {
       SVGCache.init(options);
       return style.walkDecls(/^background|^filter|^content|image$/, function(decl) {
-        var ___, error, matches, name, params, replace, svg;
+        var ___, error, error1, matches, name, params, replace, svg;
         if (!decl.value) {
           return;
         }
         while (matches = SVGRegExp.exec(decl.value.replace(/'/g, '"'))) {
-          ___ = matches[0], name = matches[1], params = 3 <= matches.length ? slice.call(matches, 2) : [];
+          ___ = matches[0], name = matches[1], ___ = matches[2], params = matches[3];
           if (options.debug) {
             console.time("Render svg " + name);
           }
           try {
             svg = SVGCache.get(name);
-          } catch (_error) {
-            error = _error;
+          } catch (error1) {
+            error = error1;
             if (silent) {
               decl.warn(result, "postcss-svg: " + error);
             } else {
@@ -46,7 +45,7 @@
             return;
           }
           replace = replaceRegExp.exec(decl.value)[0];
-          decl.value = decl.value.replace(replace, svg.dataUrl(params[1]));
+          decl.value = decl.value.replace(replace, svg.toBase64DataUri(params));
           if (options.debug) {
             console.timeEnd("Render svg " + name);
           }

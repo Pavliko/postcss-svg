@@ -34,6 +34,13 @@ class SVGImage
     svg = @_svgoSync(svg) if @svgo
     "url(\"data:image/svg+xml,#{encodeURIComponent(svg)}\")"
 
+  toBase64DataUri: (params = {}) ->
+    params = @_parseStyle(params) if _.isString(params)
+    params = _.extend({}, @defaults, params)
+    svg = @template(params)
+    svg = @_svgoSync(svg) if @svgo
+    "url(\"data:image/svg+xml;base64,#{new Buffer(svg).toString('base64')}\")"
+
   _svgoSync: (svgString) ->
     result = false
 
