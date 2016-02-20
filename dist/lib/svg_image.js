@@ -205,7 +205,7 @@
     };
 
     SVGImage.prototype._addColor = function(type, attributes, node) {
-      var base, color, key, selectors, typeSelector;
+      var base, color, error, key, selectors, typeSelector;
       try {
         color = attributes[type].value === 'none' ? Color('rgba(255, 255, 255, 0)') : Color(attributes[type].value);
         typeSelector = "[" + type + "]";
@@ -233,7 +233,7 @@
           return "it[\'" + selector + "\']";
         });
         return node.attributes[attributes[type].index].value = "{{= " + (selectors.join(' || ')) + " || \'" + attributes[type].value + "\'}}";
-      } catch (_error) {
+      } catch (error) {
 
       }
     };

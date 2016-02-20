@@ -42,7 +42,7 @@ header h1 a:after {
   content: '';
   width: 50px;
   height: 50px;
-  content: svg('ei#sc-github', '[fill]: black');
+  content: svg('../node_modules/evil-icons/assets/sprite.svg#ei-sc-github-icon', '[fill]: black');
 }
 
 header ul {
@@ -61,7 +61,7 @@ header ul li:before{
   content: '';
   width: 25px;
   height: 25px;
-  background: svg("ei#check");
+  background: svg("../node_modules/evil-icons/assets/sprite.svg#ei-check-icon");
   left: -25px;
   top: 0;
 }
@@ -73,7 +73,7 @@ header ul li:last-child:before {
 header ul li:last-child i {
   position: absolute;
   display: block;
-  content: svg("ei#like", "[fill]: #46629E");
+  content: svg("../node_modules/evil-icons/assets/sprite.svg#ei-like-icon", "[fill]: #46629E");
   width: 25px;
   height: 25px;
   left: -25px;
@@ -131,33 +131,33 @@ pre.example:before {
 }
 
 .simple-inline:before {
-  background-image: svg("loupe");
+  background-image: svg("loupe.svg");
 }
 
 .color:before {
-  background-image: svg("loupe", "[color]: red");
+  background-image: svg("./loupe.svg", "[color]: red");
 }
 
 .fill-stroke:before {
-  background-image: svg("loupe", "[fill]: rgba(105, 200, 250, .2); [stroke]: brown");
+  background-image: svg("./loupe.svg", "[fill]: rgba(105, 200, 250, .2); [stroke]: brown");
 }
 
 .tag-name:before {
-  background-image: svg("loupe", "circle[fill]: rgba(105, 200, 250, .2); circle[stroke]: gray; path[stroke]: brown;");
+  background-image: svg("./loupe.svg", "circle[fill]: rgba(105, 200, 250, .2); circle[stroke]: gray; path[stroke]: brown;");
 }
 
 .class-name:before {
-  background-image: svg("loupe", ".glass[fill]: rgba(105, 200, 250, .2);"), svg("loupe", "[stroke]: brown;");
+  background-image: svg("./loupe.svg", ".glass[fill]: rgba(105, 200, 250, .2);"), svg("./loupe.svg", "[stroke]: brown;");
 }
 
 .color-group:before {
-  background-image: svg("loupe", "colorGroup0: red; colorGroup1: blue;");
+  background-image: svg("./loupe.svg", "colorGroup0: red; colorGroup1: blue;");
 }
 
 .identifier:before {
-  background-image: svg("loupe", "#rim[fill]: rgba(105, 200, 250, .2); #rim[stroke]: gray; #handle[stroke]: brown;");
+  background-image: svg("./loupe.svg", "#rim[fill]: rgba(105, 200, 250, .2); #rim[stroke]: gray; #handle[stroke]: brown;");
 }
 
 .color-index:before {
-  background-image: svg("loupe", "color0: rgba(105, 200, 250, .2); color1: gray; color2: brown;");
+  background-image: svg("./loupe.svg", "color0: rgba(105, 200, 250, .2); color1: gray; color2: brown;");
 }

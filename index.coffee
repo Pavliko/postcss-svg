@@ -18,13 +18,14 @@ module.exports = postcss.plugin "postcss-svg", (options = {}) ->
         [___, name, params...] = matches
         console.time ("Render svg #{name}") if options.debug
         try
-          svg = SVGCache.get(name)
+          svg = SVGCache.getRelative(decl.source.input.file, name)
         catch error
           if silent
             decl.warn result, "postcss-svg: #{error}"
           else
             throw decl.error(error)
         return unless svg
+
         replace = replaceRegExp.exec(decl.value)[0]
         decl.value = decl.value.replace replace, svg.dataUrl(params[1])
         console.timeEnd ("Render svg #{name}") if options.debug
