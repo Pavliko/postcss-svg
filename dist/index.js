@@ -20,8 +20,8 @@
     if (options.debug) {
       silent = false;
     }
+    SVGCache.init(options);
     return function(style, result) {
-      SVGCache.init(options);
       return style.walkDecls(/^background|^filter|^content|image$/, function(decl) {
         var ___, error, matches, name, params, replace, svg;
         if (!decl.value) {
