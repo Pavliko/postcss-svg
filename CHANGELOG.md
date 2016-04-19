@@ -1,3 +1,11 @@
+### 1.0.5 - 2016-04-19
+
+Merge pull requests:
+* Fix init cache position https://github.com/Pavliko/postcss-svg/pull/30
+* Pin dependencies https://github.com/Pavliko/postcss-svg/pull/26
+* fix deprecated func https://github.com/Pavliko/postcss-svg/pull/20
+* pass strip:false to the template engine (really, this time!) https://github.com/Pavliko/postcss-svg/pull/16
+
 ### 1.0.4 - 2015-11-09
 
 PostCSS 5 compatibility (https://github.com/Pavliko/postcss-svg/issues/13)
