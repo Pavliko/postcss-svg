@@ -32,7 +32,7 @@ class SVGImage
     params = _.extend({}, @defaults, params)
     svg = @template(params)
     svg = @_svgoSync(svg) if @svgo
-    "url(\"data:image/svg+xml,#{encodeURIComponent(svg)}\")"
+    "url(\"data:image/svg+xml;charset=utf-8,#{encodeURIComponent(svg)}\")"
 
   _svgoSync: (svgString) ->
     result = false
@@ -69,8 +69,8 @@ class SVGImage
       doc.setAttribute('style', "{{= #{_.map(['fill', 'stroke'], transform).join('+')} }}")
 
     unless @svgAttributes.height || @svgAttributes.width
-      doc.setAttribute('height', "{{= it['[height]'] || it['[size]'] || '' }}")
-      doc.setAttribute('width', "{{= it['[width]'] || it['[size]'] || '' }}")
+      doc.setAttribute('height', "{{= it['[height]'] || it['[size]'] || '100%' }}")
+      doc.setAttribute('width', "{{= it['[width]'] || it['[size]'] || '100%' }}")
 
   _parseNode: (node, result, callback, path='') ->
     if node.childNodes

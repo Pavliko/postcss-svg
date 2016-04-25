@@ -57,7 +57,7 @@
       if (this.svgo) {
         svg = this._svgoSync(svg);
       }
-      return "url(\"data:image/svg+xml," + (encodeURIComponent(svg)) + "\")";
+      return "url(\"data:image/svg+xml;charset=utf-8," + (encodeURIComponent(svg)) + "\")";
     };
 
     SVGImage.prototype._svgoSync = function(svgString) {
@@ -117,8 +117,8 @@
         doc.setAttribute('style', "{{= " + (_.map(['fill', 'stroke'], transform).join('+')) + " }}");
       }
       if (!(this.svgAttributes.height || this.svgAttributes.width)) {
-        doc.setAttribute('height', "{{= it['[height]'] || it['[size]'] || '' }}");
-        return doc.setAttribute('width', "{{= it['[width]'] || it['[size]'] || '' }}");
+        doc.setAttribute('height', "{{= it['[height]'] || it['[size]'] || '100%' }}");
+        return doc.setAttribute('width', "{{= it['[width]'] || it['[size]'] || '100%' }}");
       }
     };
 
@@ -207,7 +207,7 @@
     };
 
     SVGImage.prototype._addColor = function(type, attributes, node) {
-      var base, color, key, selectors, typeSelector;
+      var base, color, error, key, selectors, typeSelector;
       try {
         color = attributes[type].value === 'none' ? Color('rgba(255, 255, 255, 0)') : Color(attributes[type].value);
         typeSelector = "[" + type + "]";
@@ -235,7 +235,7 @@
           return "it[\'" + selector + "\']";
         });
         return node.attributes[attributes[type].index].value = "{{= " + (selectors.join(' || ')) + " || \'" + attributes[type].value + "\'}}";
-      } catch (_error) {
+      } catch (error) {
 
       }
     };
