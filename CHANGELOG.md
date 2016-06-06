@@ -1,3 +1,8 @@
+### 1.0.6 - 2016-05-07
+
+Merge pull request:
+* added charset=utf8 and set default image sizes to 100% https://github.com/Pavliko/postcss-svg/pull/32
+
 ### 1.0.5 - 2016-04-19
 
 Merge pull requests:
