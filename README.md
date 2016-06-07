@@ -96,7 +96,7 @@ Type: `String` Default: `''` Example: `'[fill]: #00F800; .glass[fill]: rgba(0, 0
 You can set default rules for all included SVG
 
 #### ei
-Type: `Boolean`, `Object` Default: `true` Example: `{ "dfaults": "[fill]: red" }` Required: `false`
+Type: `Boolean`, `Object` Default: `true` Example: `{ "defaults": "[fill]: red" }` Required: `false`
 
 You can set false to disable initializing Evil Icons. Or you can set different defaults only for Evil Icons.
 
