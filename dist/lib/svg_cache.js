@@ -94,7 +94,7 @@
         }
       } else {
         if (second) {
-          throw "'" + link + "' not found in SVG csche (paths: " + (this.paths.join(', ')) + ")";
+          throw "'" + link + "' not found in SVG cache (paths: " + (this.paths.join(', ')) + ")";
         } else {
           identifier = (identifier.indexOf('.svg') === -1 ? identifier + ".svg" : identifier);
           this.addToIndex(identifier, this.svgOptions);
