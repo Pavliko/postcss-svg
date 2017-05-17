@@ -3,6 +3,10 @@
   "version": "2.0.0",
   "description": "Inline SVGs in CSS. Supports SVG Fragments, SVG Parameters.",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
+  "contributors": [
+    "Pavel Gorlov <i@pavliko.com>",
+    "Jonathan Neal <jonathantneal@hotmail.com>"
+  ],
   "license": "CC0-1.0",
   "repository": "jonathantneal/postcss-svg",
   "homepage": "https://github.com/jonathantneal/postcss-svg#readme",
