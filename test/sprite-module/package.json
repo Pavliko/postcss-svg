@@ -1,0 +1,6 @@
+{
+  "name": "test-sprite-module",
+  "version": "1.0.0",
+  "media": "module-sprite.svg",
+  "private": true
+}
