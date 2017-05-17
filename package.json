@@ -1,47 +1,61 @@
 {
   "name": "postcss-svg",
-  "version": "1.0.6",
-  "description": "Postcss plugin for insert inline SVG to CSS",
-  "main": "dist/index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Pavliko/postcss-svg.git"
+  "version": "2.0.0",
+  "description": "Inline SVGs in CSS. Supports SVG Fragments, SVG Parameters.",
+  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
+  "license": "CC0-1.0",
+  "repository": "jonathantneal/postcss-svg",
+  "homepage": "https://github.com/jonathantneal/postcss-svg#readme",
+  "bugs": "https://github.com/jonathantneal/postcss-svg/issues",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "lib"
+  ],
+  "scripts": {
+    "clean": "git clean -X -d -f",
+    "prepublish": "npm test",
+    "test": "echo 'Running tests...'; npm run test:js && npm run test:tape",
+    "test:js": "eslint *.js --cache --ignore-pattern .gitignore",
+    "test:tape": "postcss-tape"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "dependencies": {
+    "postcss": "^6.0.1",
+    "postcss-value-parser": "^3.3.0",
+    "xmldoc": "^1.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-dev": "2.0.0",
+    "postcss-tape": "2.0.1",
+    "pre-commit": "^1.2.2",
+    "test-sprite-module": "file:test/sprite-module"
+  },
+  "eslintConfig": {
+    "extends": "dev"
   },
   "keywords": [
     "postcss",
-    "plugin",
-    "svg",
-    "inline",
-    "colorize",
-    "color",
     "css",
+    "postcss-plugin",
+    "svgs",
+    "scalable",
+    "vector",
+    "graphic",
     "image",
-    "background",
-    "postcss-plugin"
-  ],
-  "author": "Pavel Gorlov",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Pavliko/postcss-svg/issues"
-  },
-  "homepage": "https://github.com/Pavliko/postcss-svg#readme",
-  "dependencies": {
-    "color": "0.10.1",
-    "dot": "1.0.3",
-    "evil-icons": "1.7.8",
-    "lodash": "3.10.1",
-    "postcss": "5.0.10",
-    "svgo": "0.5.6",
-    "xmldom": "0.1.19"
-  },
-  "devDependencies": {
-    "autoprefixer-core": "6.0.1",
-    "gulp": "3.9.0",
-    "gulp-coffee": "2.3.1",
-    "gulp-livereload": "3.8.1",
-    "gulp-load-plugins": "1.1.0",
-    "gulp-postcss": "6.0.1",
-    "gulp-rename": "1.2.2",
-    "open": "0.0.5"
-  }
+    "img",
+    "picture",
+    "pic",
+    "fragment",
+    "identifier",
+    "id",
+    "hash",
+    "url",
+    "inline",
+    "utf8",
+    "base64"
+  ]
 }

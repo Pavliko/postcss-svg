@@ -1,0 +1,27 @@
+test-sprite {
+	background-image: url("sprite-camera.svg");
+}
+
+test-sprite-with-id {
+	background-image: url("sprite.svg#camera");
+}
+
+test-sprite-with-id-without-quotes {
+	background-image: url(sprite.svg#camera);
+}
+
+test-sprite-with-param {
+	background-image: url("sprite-camera.svg" param(--color blue));
+}
+
+test-sprite-with-id-with-param {
+	background-image: url("sprite.svg#camera" param(--color blue));
+}
+
+test-empty-sprite {
+	background-image: url("sprite-empty.svg");
+}
+
+test-empty-sprite-with-id {
+	background-image: url("sprite-empty.svg#camera");
+}

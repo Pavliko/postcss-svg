@@ -1,3 +1,10 @@
+# Changes to PostCSS SVG
+
+### 2.0.0 - 2017-05-15
+
+Refactored plugin:
+* Functionality from PostCSS SVG Fragments
+
 ### 1.0.6 - 2016-05-07
 
 Merge pull request:

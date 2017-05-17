@@ -1,0 +1,31 @@
+test-sprite-module-with-fragment {
+	background-image: url(sprite-module#camera);
+}
+
+test-sprite-installed-module-with-fragment {
+	background-image: url(test-sprite-module#camera);
+}
+
+test-sprite-module-without-fragment {
+	background-image: url(sprite-module);
+}
+
+test-sprite-module-with-fragment-and-param {
+	background-image: url("sprite-module#camera" param(--fill blue));
+}
+
+test-sprite-module-file-with-param {
+	background-image: url("sprite-module/module-sprite-camera.svg" param(--fill blue));
+}
+
+test-sprite-module-file-with-fragment-and-param {
+	background-image: url("sprite-module/module-sprite.svg#camera" param(--fill blue));
+}
+
+test-sprite-module-with-invalid-fragment-1 {
+	background-image: url(sprite-module#none);
+}
+
+test-sprite-module-with-invalid-fragment-2 {
+	background-image: url(sprite-module#);
+}
