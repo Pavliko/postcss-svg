@@ -1,6 +1,6 @@
 {
   "name": "postcss-svg",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Inline SVGs in CSS. Supports SVG Fragments, SVG Parameters.",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "contributors": [

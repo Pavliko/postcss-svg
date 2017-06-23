@@ -1,5 +1,13 @@
 # Changes to PostCSS SVG
 
+### 2.1.0 - 2017-06-23
+
+Merge pull request:
+* Support rgb/rgba and hsl/hsla colors in parameters
+https://github.com/Pavliko/postcss-svg/pull/40
+* Remove unused files
+* Update dependencies; don’t specify minor, patch requirements
+
 ### 2.0.0 - 2017-05-15
 
 Refactored plugin:
