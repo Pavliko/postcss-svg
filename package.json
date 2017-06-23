@@ -24,18 +24,18 @@
     "test:tape": "postcss-tape"
   },
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=4"
   },
   "dependencies": {
-    "postcss": "^6.0.1",
-    "postcss-value-parser": "^3.3.0",
-    "xmldoc": "^1.1.0"
+    "postcss": "6.x",
+    "postcss-value-parser": "3.x",
+    "xmldoc": "1.x"
   },
   "devDependencies": {
-    "eslint": "^3.19.0",
-    "eslint-config-dev": "2.0.0",
-    "postcss-tape": "2.0.1",
-    "pre-commit": "^1.2.2",
+    "eslint": "4.x",
+    "eslint-config-dev": "2.x",
+    "postcss-tape": "2.x",
+    "pre-commit": "1.x",
     "test-sprite-module": "file:test/sprite-module"
   },
   "eslintConfig": {
