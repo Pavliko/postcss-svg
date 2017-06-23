@@ -14,6 +14,26 @@ test-sprite-with-param {
 	background-image: url("sprite-camera.svg" param(--color blue));
 }
 
+test-sprite-with-hex-param {
+	background-image: url("sprite-camera.svg" param(--color #00F));
+}
+
+test-sprite-with-rgb-param {
+	background-image: url("sprite-camera.svg" param(--color rgb(0, 0, 255)));
+}
+
+test-sprite-with-rgba-param {
+	background-image: url("sprite-camera.svg" param(--color rgba(0, 0, 255, 0.5)));
+}
+
+test-sprite-with-hsl-param {
+	background-image: url("sprite-camera.svg" param(--color hsl(240, 100%, 50%)));
+}
+
+test-sprite-with-hsla-param {
+	background-image: url("sprite-camera.svg" param(--color hsla(240, 100%, 50%, 0.5)));
+}
+
 test-sprite-with-id-with-param {
 	background-image: url("sprite.svg#camera" param(--color blue));
 }
