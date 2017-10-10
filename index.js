@@ -13,7 +13,7 @@ const transpileDecl = require('./lib/transpile-decl');
 /* Inline SVGs
 /* ========================================================================== */
 
-module.exports = postcss.plugin('postcss-svg-fragments', (rawopts) => (css, result) => {
+module.exports = postcss.plugin('postcss-svg-fragments', rawopts => (css, result) => {
 	// svg promises array
 	const promises = [];
 
@@ -29,18 +29,16 @@ module.exports = postcss.plugin('postcss-svg-fragments', (rawopts) => (css, resu
 	const cssCWD = css.source && css.source.input && css.source.input.file ? path.dirname(css.source.input.file) : process.cwd();
 
 	// for each declaration in the stylesheet
-	css.walkDecls(
-		(decl) => {
-			// if the declaration contains a url()
-			if (containsUrlFunction(decl)) {
-				// path to the current working directory by declaration
-				const declCWD = decl.source && decl.source.input && decl.source.input.file ? path.dirname(decl.source.input.file) : cssCWD;
+	css.walkDecls(decl => {
+		// if the declaration contains a url()
+		if (containsUrlFunction(decl)) {
+			// path to the current working directory by declaration
+			const declCWD = decl.source && decl.source.input && decl.source.input.file ? path.dirname(decl.source.input.file) : cssCWD;
 
-				// transpile declaration parts
-				transpileDecl(result, promises, decl, declCWD, opts);
-			}
+			// transpile declaration parts
+			transpileDecl(result, promises, decl, declCWD, opts);
 		}
-	);
+	});
 
 	// return chained svg promises array
 	return Promise.all(promises);

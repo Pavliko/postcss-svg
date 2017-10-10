@@ -140,19 +140,19 @@ require('postcss-svg')({
 })
 ```
 
-[npm-url]: https://www.npmjs.com/package/postcss-svg
-[npm-img]: https://img.shields.io/npm/v/postcss-svg.svg
 [cli-url]: https://travis-ci.org/jonathantneal/postcss-svg
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-svg.svg
-[win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-svg
-[win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-svg.svg
 [git-url]: https://gitter.im/postcss/postcss
 [git-img]: https://img.shields.io/badge/chat-gitter-blue.svg
+[npm-url]: https://www.npmjs.com/package/postcss-svg
+[npm-img]: https://img.shields.io/npm/v/postcss-svg.svg
+[win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-svg
+[win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-svg.svg
 
-[PostCSS SVG]: https://github.com/jonathantneal/postcss-svg
+[Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
+[Gulp PostCSS]: https://github.com/postcss/gulp-postcss
+[Modules]: https://nodejs.org/api/modules.html#modules_modules
 [PostCSS]: https://github.com/postcss/postcss
+[PostCSS SVG]: https://github.com/jonathantneal/postcss-svg
 [SVG Fragments]: https://css-tricks.com/svg-fragment-identifiers-work/
 [SVG Parameters]: https://tabatkins.github.io/specs/svg-params/
-[Modules]: https://nodejs.org/api/modules.html#modules_modules
-[Gulp PostCSS]: https://github.com/postcss/gulp-postcss
-[Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
