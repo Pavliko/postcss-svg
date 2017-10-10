@@ -9,6 +9,12 @@ module.exports = {
 				utf8: false
 			}
 		},
+		'basic:svgo': {
+			message: 'supports { "svgo": true } usage',
+			options: {
+				svgo: true
+			}
+		},
 		'package': {
 			message: 'supports package usage'
 		},

@@ -29,6 +29,7 @@
   "dependencies": {
     "postcss": "6.x",
     "postcss-value-parser": "3.x",
+    "svgo": "0.x",
     "xmldoc": "1.x"
   },
   "devDependencies": {

@@ -140,6 +140,14 @@ require('postcss-svg')({
 })
 ```
 
+[svgo] compression can be easily enabled and configured.
+
+```js
+require('postcss-svg')({
+  svgo: { plugins: [{ cleanupAttrs: true }] } /* Whether and how to use svgo compression. Default is false. */
+})
+```
+
 [cli-url]: https://travis-ci.org/jonathantneal/postcss-svg
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-svg.svg
 [git-url]: https://gitter.im/postcss/postcss
@@ -156,3 +164,4 @@ require('postcss-svg')({
 [PostCSS SVG]: https://github.com/jonathantneal/postcss-svg
 [SVG Fragments]: https://css-tricks.com/svg-fragment-identifiers-work/
 [SVG Parameters]: https://tabatkins.github.io/specs/svg-params/
+[svgo]: https://github.com/svg/svgo

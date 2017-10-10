@@ -22,7 +22,9 @@ module.exports = postcss.plugin('postcss-svg-fragments', rawopts => (css, result
 		// additional directories to search for SVGs
 		dirs: rawopts && 'dirs' in rawopts ? typeof rawopts.dirs === 'string' ? [rawopts.dirs] : Array.from(rawopts.dirs) : [],
 		// whether to encode as utf-8
-		utf8: rawopts && 'utf8' in rawopts ? Boolean(rawopts.utf8) : true
+		utf8: rawopts && 'utf8' in rawopts ? Boolean(rawopts.utf8) : true,
+		// whether and how to compress with svgo
+		svgo: rawopts && 'svgo' in rawopts ? Object(rawopts.svgo) : false
 	};
 
 	// path to the current working directory by stylesheet
