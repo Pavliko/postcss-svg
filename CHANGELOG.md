@@ -1,5 +1,9 @@
 # Changes to PostCSS SVG
 
+### 2.2.0 - 2017-10-09
+
+* Added configurable SVGO functionality
+
 ### 2.1.0 - 2017-06-23
 
 Merge pull request:
