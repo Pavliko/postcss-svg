@@ -18,8 +18,9 @@
   ],
   "scripts": {
     "clean": "git clean -X -d -f",
-    "prepublish": "npm test",
-    "test": "echo 'Running tests...'; npm run test:js && npm run test:tape",
+    "prepublish": "npm run test",
+    "test": "echo 'Running tests...'; npm run test:ec && npm run test:js && npm run test:tape",
+    "test:ec": "echint",
     "test:js": "eslint *.js --cache --ignore-pattern .gitignore",
     "test:tape": "postcss-tape"
   },
@@ -33,6 +34,7 @@
     "xmldoc": "1.x"
   },
   "devDependencies": {
+    "echint": "4.x",
     "eslint": "4.x",
     "eslint-config-dev": "2.x",
     "postcss-tape": "2.x",
