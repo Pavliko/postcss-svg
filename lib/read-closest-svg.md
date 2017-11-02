@@ -1,4 +1,4 @@
-# Resolve Algorithm
+# SVG Resolve Algorithm
 
 The following high-level algorithm is used to resolve the location and contents
 of an SVG found within `url(id)` from `cwd`:
@@ -17,7 +17,7 @@ of an SVG found within `url(id)` from `cwd`:
 1. if `file` is a file, resolve the contents of `file`
 2. otherwise, if `file.svg` is a file, resolve the contents of `file.svg`
 
-## Resolve as Directory
+## Resolve as a Directory
 
 1. if `dir/package.json` is a file, set `pkg` as the JSON contents of
    `dir/package.json`
@@ -28,7 +28,7 @@ of an SVG found within `url(id)` from `cwd`:
    3. otherwise, if `id/index.svg` is a file
       1. resolve the contents of `dir/index.svg`
 
-## Resolve as Module
+## Resolve as a Module
 
 1. for each `dir` in [module dirs](#module-dirs) using `cwd`:
    1. [resolve as a file](#resolve-as-a-file) using `dir/id` as `file`
