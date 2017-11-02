@@ -14,7 +14,7 @@
   "main": "index.js",
   "files": [
     "index.js",
-    "lib"
+    "lib/*.js"
   ],
   "scripts": {
     "clean": "git clean -X -d -f",
