@@ -13,32 +13,35 @@ const transpileDecl = require('./lib/transpile-decl');
 /* Inline SVGs
 /* ========================================================================== */
 
-module.exports = postcss.plugin('postcss-svg-fragments', rawopts => (css, result) => {
+module.exports = postcss.plugin('postcss-svg-fragments', argopts => (css, result) => {
 	// svg promises array
 	const promises = [];
 
 	// plugin options
 	const opts = {
 		// additional directories to search for SVGs
-		dirs: rawopts && 'dirs' in rawopts ? typeof rawopts.dirs === 'string' ? [rawopts.dirs] : Array.from(rawopts.dirs) : [],
+		dirs: argopts && 'dirs' in argopts ? [].concat(argopts.dirs) : [],
 		// whether to encode as utf-8
-		utf8: rawopts && 'utf8' in rawopts ? Boolean(rawopts.utf8) : true,
+		utf8: argopts && 'utf8' in argopts ? Boolean(argopts.utf8) : true,
 		// whether and how to compress with svgo
-		svgo: rawopts && 'svgo' in rawopts ? Object(rawopts.svgo) : false
+		svgo: argopts && 'svgo' in argopts ? Object(argopts.svgo) : false
 	};
 
 	// path to the current working directory by stylesheet
-	const cssCWD = css.source && css.source.input && css.source.input.file ? path.dirname(css.source.input.file) : process.cwd();
+	const cssWD = css.source && css.source.input && css.source.input.file ? path.dirname(css.source.input.file) : process.cwd();
+
+	// cache of file content and json content promises
+	const cache = {};
 
 	// for each declaration in the stylesheet
 	css.walkDecls(decl => {
 		// if the declaration contains a url()
 		if (containsUrlFunction(decl)) {
 			// path to the current working directory by declaration
-			const declCWD = decl.source && decl.source.input && decl.source.input.file ? path.dirname(decl.source.input.file) : cssCWD;
+			const declWD = decl.source && decl.source.input && decl.source.input.file ? path.dirname(decl.source.input.file) : cssWD;
 
 			// transpile declaration parts
-			transpileDecl(result, promises, decl, declCWD, opts);
+			transpileDecl(result, promises, decl, declWD, opts, cache);
 		}
 	});
 

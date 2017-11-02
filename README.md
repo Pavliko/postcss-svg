@@ -39,6 +39,9 @@ you push compiled CSS variables into your SVGs.
 }
 ```
 
+The location of an SVG is intelligently resolved using the
+[SVG Resolve Algorithm].
+
 ## Usage
 
 Add [PostCSS SVG] to your build tool:
@@ -164,4 +167,5 @@ require('postcss-svg')({
 [PostCSS SVG]: https://github.com/jonathantneal/postcss-svg
 [SVG Fragments]: https://css-tricks.com/svg-fragment-identifiers-work/
 [SVG Parameters]: https://tabatkins.github.io/specs/svg-params/
+[SVG Resolve Algorithm]: lib/read-closest-svg.md
 [svgo]: https://github.com/svg/svgo

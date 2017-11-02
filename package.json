@@ -38,8 +38,7 @@
     "eslint": "4.x",
     "eslint-config-dev": "2.x",
     "postcss-tape": "2.x",
-    "pre-commit": "1.x",
-    "test-sprite-module": "file:test/sprite-module"
+    "pre-commit": "1.x"
   },
   "eslintConfig": {
     "extends": "dev"

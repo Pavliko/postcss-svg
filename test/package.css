@@ -2,10 +2,6 @@ test-sprite-module-with-fragment {
 	background-image: url(sprite-module#camera);
 }
 
-test-sprite-installed-module-with-fragment {
-	background-image: url(test-sprite-module#camera);
-}
-
 test-sprite-module-without-fragment {
 	background-image: url(sprite-module);
 }

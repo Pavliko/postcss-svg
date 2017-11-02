@@ -21,7 +21,7 @@ module.exports = {
 		'paths': {
 			message: 'supports { "paths" } usage',
 			options: {
-				dirs: 'sprite-module'
+				dirs: 'test/sprite-module'
 			}
 		}
 	}
