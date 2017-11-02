@@ -1,5 +1,11 @@
 # Changes to PostCSS SVG
 
+### 2.3.0 - 2017-11-02
+
+* Update SVGO to 1.x
+* Improve SVG file resolution
+* Improve SVG file caching
+
 ### 2.2.0 - 2017-10-09
 
 * Added configurable SVGO functionality
