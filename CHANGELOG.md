@@ -1,5 +1,9 @@
 # Changes to PostCSS SVG
 
+### 2.4.0 - 2017-12-05
+
+* Conditionally watch SVG files for changes
+
 ### 2.3.0 - 2017-11-02
 
 * Update SVGO to 1.x

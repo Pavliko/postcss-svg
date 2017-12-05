@@ -1,6 +1,6 @@
 {
   "name": "postcss-svg",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "Inline SVGs in CSS. Supports SVG Fragments, SVG Parameters.",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "contributors": [
@@ -18,7 +18,7 @@
   ],
   "scripts": {
     "clean": "git clean -X -d -f",
-    "prepublish": "npm run test",
+    "prepublishOnly": "npm run test",
     "test": "echo 'Running tests...'; npm run test:ec && npm run test:js && npm run test:tape",
     "test:ec": "echint",
     "test:js": "eslint *.js --cache --ignore-pattern .gitignore",
