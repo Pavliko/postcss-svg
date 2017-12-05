@@ -1,9 +1,6 @@
 /* Tooling
 /* ========================================================================== */
 
-// native tooling
-const path = require('path');
-
 // external tooling
 const postcss = require('postcss');
 
@@ -27,9 +24,6 @@ module.exports = postcss.plugin('postcss-svg-fragments', argopts => (css, result
 		svgo: argopts && 'svgo' in argopts ? Object(argopts.svgo) : false
 	};
 
-	// path to the current working directory by stylesheet
-	const cssWD = css.source && css.source.input && css.source.input.file ? path.dirname(css.source.input.file) : process.cwd();
-
 	// cache of file content and json content promises
 	const cache = {};
 
@@ -37,11 +31,8 @@ module.exports = postcss.plugin('postcss-svg-fragments', argopts => (css, result
 	css.walkDecls(decl => {
 		// if the declaration contains a url()
 		if (containsUrlFunction(decl)) {
-			// path to the current working directory by declaration
-			const declWD = decl.source && decl.source.input && decl.source.input.file ? path.dirname(decl.source.input.file) : cssWD;
-
 			// transpile declaration parts
-			transpileDecl(result, promises, decl, declWD, opts, cache);
+			transpileDecl(result, promises, decl, opts, cache);
 		}
 	});
 
