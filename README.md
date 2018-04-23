@@ -3,16 +3,16 @@
 [![NPM Version][npm-img]][npm-url]
 [![Linux Build Status][cli-img]][cli-url]
 [![Windows Build Status][win-img]][win-url]
-[![Gitter Chat][git-img]][git-url]
+[![Support Chat][git-img]][git-url]
 
 [PostCSS SVG] lets you inline SVGs in CSS.
 
-```css
+```pcss
 .icon--square {
   content: url("shared-sprites#square" param(--color blue));
 }
 
-/* after postcss-svg ↓ */
+/* becomes */
 
 .icon--square {
   content: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Crect style='fill:blue' width='100%25' height='100%25'/%3E%3C/svg%3E");
@@ -55,7 +55,9 @@ npm install postcss-svg --save-dev
 Use [PostCSS SVG] to process your CSS:
 
 ```js
-require('postcss-svg').process(YOUR_CSS);
+import postcssSVG from 'postcss-svg';
+
+postcssSVG.process(YOUR_CSS);
 ```
 
 #### PostCSS
@@ -69,9 +71,46 @@ npm install postcss --save-dev
 Use [PostCSS SVG] as a plugin:
 
 ```js
+import postcss from 'gulp-postcss';
+import postcssSVG from 'postcss-svg';
+
 postcss([
-  require('postcss-svg')()
+  postcssSVG(/* options */)
 ]).process(YOUR_CSS);
+```
+
+#### Webpack
+
+Add [PostCSS Loader] to your build tool:
+
+```bash
+npm install postcss-loader --save-dev
+```
+
+Use [PostCSS SVG] in your Webpack configuration:
+
+```js
+import postcssSVG from 'postcss-svg';
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          { loader: 'css-loader', options: { importLoaders: 1 } },
+          { loader: 'postcss-loader', options: {
+            ident: 'postcss',
+            plugins: () => [
+              postcssSVG(/* options */)
+            ]
+          } }
+        ]
+      }
+    ]
+  }
+}
 ```
 
 #### Gulp
@@ -85,17 +124,16 @@ npm install gulp-postcss --save-dev
 Use [PostCSS SVG] in your Gulpfile:
 
 ```js
-var postcss = require('gulp-postcss');
+import postcss from 'gulp-postcss';
+import postcssSVG from 'postcss-svg';
 
-gulp.task('css', function () {
-  return gulp.src('./src/*.css').pipe(
-    postcss([
-      require('postcss-svg')()
-    ])
-  ).pipe(
-    gulp.dest('.')
-  );
-});
+gulp.task('css', () => gulp.src('./src/*.css').pipe(
+  postcss([
+    postcssSVG(/* options */)
+  ])
+).pipe(
+  gulp.dest('.')
+));
 ```
 
 #### Grunt
@@ -109,13 +147,15 @@ npm install grunt-postcss --save-dev
 Use [PostCSS SVG] in your Gruntfile:
 
 ```js
+import postcssSVG from 'postcss-svg';
+
 grunt.loadNpmTasks('grunt-postcss');
 
 grunt.initConfig({
   postcss: {
     options: {
       use: [
-        require('postcss-svg')()
+       postcssSVG(/* options */)
       ]
     },
     dist: {
@@ -125,28 +165,30 @@ grunt.initConfig({
 });
 ```
 
-## Advanced Usage
+## Options
 
-Additional directories can be specified for locating SVGs.
+### dirs
+
+The `dirs` option specifies additional directories used to locate SVGs.
 
 ```js
-require('postcss-svg')({
+postcssSVG({
   dirs: ['some-folder', 'another-folder'] /* Just a string will work, too */
 })
 ```
 
-UTF-8 encoding can be swapped for base64 encoding.
+The `utf8` option determines whether the SVG is UTF-8 encoded or base64 encoded.
 
 ```js
-require('postcss-svg')({
+postcssSVG({
   utf8: false /* Whether to use utf-8 or base64 encoding. Default is true. */
 })
 ```
 
-[svgo] compression can be easily enabled and configured.
+The `svgo` option determines whether and how [svgo] compression is used.
 
 ```js
-require('postcss-svg')({
+postcssSVG({
   svgo: { plugins: [{ cleanupAttrs: true }] } /* Whether and how to use svgo compression. Default is false. */
 })
 ```
@@ -154,7 +196,7 @@ require('postcss-svg')({
 [cli-url]: https://travis-ci.org/jonathantneal/postcss-svg
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-svg.svg
 [git-url]: https://gitter.im/postcss/postcss
-[git-img]: https://img.shields.io/badge/chat-gitter-blue.svg
+[git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [npm-url]: https://www.npmjs.com/package/postcss-svg
 [npm-img]: https://img.shields.io/npm/v/postcss-svg.svg
 [win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-svg
@@ -164,6 +206,7 @@ require('postcss-svg')({
 [Gulp PostCSS]: https://github.com/postcss/gulp-postcss
 [Modules]: https://nodejs.org/api/modules.html#modules_modules
 [PostCSS]: https://github.com/postcss/postcss
+[PostCSS Loader]: https://github.com/postcss/postcss-loader
 [PostCSS SVG]: https://github.com/jonathantneal/postcss-svg
 [SVG Fragments]: https://css-tricks.com/svg-fragment-identifiers-work/
 [SVG Parameters]: https://tabatkins.github.io/specs/svg-params/
