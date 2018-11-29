@@ -1,9 +1,7 @@
-'use strict';
-
 /* Element by ID
 /* ========================================================================== */
 
-module.exports = (element, id) => {
+export default function elementById(element, id) {
 	// conditionally return the matching element
 	if (element.attr && element.attr.id === id) {
 		return element;
@@ -13,7 +11,7 @@ module.exports = (element, id) => {
 		let child;
 
 		while (child = element.children[++index]) {
-			child = module.exports(child, id);
+			child = elementById(child, id);
 
 			if (child) {
 				return child;
@@ -23,4 +21,4 @@ module.exports = (element, id) => {
 
 	// return undefined if no matching elements are find
 	return undefined;
-};
+}

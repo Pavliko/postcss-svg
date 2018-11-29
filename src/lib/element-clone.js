@@ -1,9 +1,7 @@
-'use strict';
-
 /* Clone from element
 /* ========================================================================== */
 
-module.exports = element => {
+export default function elementClone(element) {
 	// element clone
 	const clone = {};
 
@@ -11,10 +9,10 @@ module.exports = element => {
 	for (let key in element) {
 		if (element[key] instanceof Array) {
 			// conditionally clone the child array
-			clone[key] = element[key].map(module.exports);
+			clone[key] = element[key].map(elementClone);
 		} else if (typeof element[key] === 'object') {
 			// otherwise, conditionally clone the child object
-			clone[key] = module.exports(element[key]);
+			clone[key] = elementClone(element[key]);
 		} else {
 			// otherwise, copy the child
 			clone[key] = element[key];
@@ -23,4 +21,4 @@ module.exports = element => {
 
 	// return the element clone
 	return clone;
-};
+}

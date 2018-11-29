@@ -1,6 +1,6 @@
 {
   "name": "postcss-svg",
-  "version": "2.4.0",
+  "version": "3.0.0",
   "description": "Inline SVGs in CSS. Supports SVG Fragments, SVG Parameters.",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "contributors": [
@@ -12,36 +12,44 @@
   "homepage": "https://github.com/jonathantneal/postcss-svg#readme",
   "bugs": "https://github.com/jonathantneal/postcss-svg/issues",
   "main": "index.js",
+  "module": "index.mjs",
   "files": [
     "index.js",
-    "lib/*.js"
+    "index.js.map",
+    "index.mjs",
+    "index.mjs.map"
   ],
   "scripts": {
-    "clean": "git clean -X -d -f",
-    "prepublishOnly": "npm run test",
-    "test": "echo 'Running tests...'; npm run test:ec && npm run test:js && npm run test:tape",
-    "test:ec": "echint",
-    "test:js": "eslint *.js --cache --ignore-pattern .gitignore",
+    "prepublish": "npm test",
+    "pretest": "rollup -c .rollup.js --silent",
+    "test": "npm run test:js && npm run test:tape",
+    "test:js": "eslint src/*.js --cache --ignore-path .gitignore --quiet",
     "test:tape": "postcss-tape"
   },
   "engines": {
-    "node": ">=4"
+    "node": ">=6.0.0"
   },
   "dependencies": {
-    "postcss": "6.x",
-    "postcss-value-parser": "3.x",
-    "svgo": "1.x",
-    "xmldoc": "1.x"
+    "postcss": "^7.0.6",
+    "postcss-values-parser": "^2.0.0",
+    "svgo": "^1.1.1",
+    "xmldoc": "^1.1.2"
   },
   "devDependencies": {
-    "echint": "4.x",
-    "eslint": "4.x",
-    "eslint-config-dev": "2.x",
-    "postcss-tape": "2.x",
-    "pre-commit": "1.x"
+    "@babel/core": "^7.1.6",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/preset-env": "^7.1.6",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.9.0",
+    "eslint-config-dev": "^2.0.0",
+    "postcss-tape": "^3.0.0",
+    "pre-commit": "^1.2.2",
+    "rollup": "^0.67.3",
+    "rollup-plugin-babel": "^4.0.3"
   },
   "eslintConfig": {
-    "extends": "dev"
+    "extends": "dev",
+    "parser": "babel-eslint"
   },
   "keywords": [
     "postcss",
@@ -62,6 +70,9 @@
     "url",
     "inline",
     "utf8",
-    "base64"
+    "base64",
+    "custom",
+    "properties",
+    "property"
   ]
 }

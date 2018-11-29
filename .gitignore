@@ -1,10 +1,11 @@
 node_modules
 package-lock.json
-.*
-!.appveyor.yml
-!.editorconfig
-!.gitignore
-!.tape.js
-!.travis.yml
 *.log*
 *.result.css
+.*
+!.editorconfig
+!.gitignore
+!.rollup.js
+!.tape.js
+!.travis.yml
+/index.*

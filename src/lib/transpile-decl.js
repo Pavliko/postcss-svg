@@ -2,22 +2,22 @@
 /* ========================================================================== */
 
 // native tooling
-const path = require('path');
+import path from 'path';
 
 // external tooling
-const parser = require('postcss-value-parser');
+import parser from 'postcss-values-parser';
 
 // internal tooling
-const elementClone     = require('./element-clone');
-const elementById      = require('./element-by-id');
-const elementAsDURISVG = require('./element-as-data-uri-svg');
-const readClosestSVG   = require('./read-closest-svg');
-const transpileStyles  = require('./transpile-styles');
+import elementClone     from './element-clone';
+import elementById      from './element-by-id';
+import elementAsDURISVG from './element-as-data-uri-svg';
+import readClosestSVG   from './read-closest-svg';
+import transpileStyles  from './transpile-styles';
 
 /* Transpile declarations
 /* ========================================================================== */
 
-module.exports = (result, promises, decl, opts, cache) => {
+export default function transpileDecl(result, promises, decl, opts, cache) { // eslint-disable-line max-params
 	// path to the current working file and directory by declaration
 	const declWF = path.resolve(decl.source && decl.source.input && decl.source.input.file ? decl.source.input.file : result.root.source && result.root.source.input && result.root.source.input.file ? result.root.source.input.file : path.join(process.cwd(), 'index.css'));
 	const declWD = path.dirname(declWF);
@@ -26,11 +26,13 @@ module.exports = (result, promises, decl, opts, cache) => {
 	const files = {};
 
 	// walk each node of the declaration
-	const declAST = parser(decl.value).walk(node => {
+	const declAST = parser(decl.value).parse();
+
+	declAST.walk(node => {
 		// if the node is a url containing an svg fragment
 		if (isExternalURLFunction(node)) {
 			// <url> of url(<url>)
-			const urlNode = node.nodes[0];
+			const urlNode = node.nodes[1];
 
 			// <url> split by fragment identifier symbol (#)
 			const urlParts = urlNode.value.split('#');
@@ -46,8 +48,12 @@ module.exports = (result, promises, decl, opts, cache) => {
 
 			// <url> param()s
 			const params = paramsFromNodes(
-				node.nodes.splice(1)
+				node.nodes.slice(2, -1)
 			);
+
+			node.nodes.slice(2, -1).forEach(childNode => {
+				childNode.remove();
+			});
 
 			promises.push(
 				readClosestSVG(src, [declWD].concat(opts.dirs), cache).then(svgResult => {
@@ -89,12 +95,17 @@ module.exports = (result, promises, decl, opts, cache) => {
 
 							// conditionally quote <url>
 							if (opts.utf8) {
-								urlNode.quote = '"';
-								urlNode.type = 'string';
+								urlNode.replaceWith(
+									parser.string({
+										value: urlNode.value,
+										quoted: true,
+										raws: Object.assign(urlNode.raws, { quote: '"' })
+									})
+								);
 							}
 
 							// update declaration
-							decl.value = declAST.toString();
+							decl.value = String(declAST);
 						});
 					}
 				}).catch(error => {
@@ -103,14 +114,14 @@ module.exports = (result, promises, decl, opts, cache) => {
 			);
 		}
 	});
-};
+}
 
 /* Inline Tooling
 /* ========================================================================== */
 
 // whether the node if a function()
 function isExternalURLFunction(node) {
-	return node.type === 'function' && node.value === 'url' && node.nodes && node.nodes[0] && (/^(?!data:)/).test(node.nodes[0].value);
+	return node.type === 'func' && node.value === 'url' && Object(node.nodes).length && (/^(?!data:)/).test(node.nodes[1].value);
 }
 
 // params from nodes
@@ -122,7 +133,7 @@ function paramsFromNodes(nodes) {
 	nodes.forEach(node => {
 		// conditionally add the valid param
 		if (isFilledParam(node)) {
-			params[node.nodes[0].value] = parser.stringify( node.nodes[2] );
+			params[node.nodes[1].value] = String(node.nodes[2]).trim();
 		}
 	});
 
@@ -132,5 +143,5 @@ function paramsFromNodes(nodes) {
 
 // whether the node is a filled param()
 function isFilledParam(node) {
-	return node.type === 'function' && node.value === 'param' && node.nodes.length === 3 && node.nodes[0].type === 'word';
+	return node.type === 'func' && node.value === 'param' && node.nodes.length === 4 && node.nodes[1].type === 'word';
 }

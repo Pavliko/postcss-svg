@@ -1,51 +1,51 @@
-'use strict';
-
 /* Tooling
 /* ========================================================================== */
 
 // native tooling
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 // external tooling
-const XmlDocument = require('xmldoc').XmlDocument;
+import { XmlDocument } from 'xmldoc';
 
 /* Promise the XML tree of the closest svg
 /* ========================================================================== */
 
-module.exports = (id, wds, cache) => wds.reduce(
-	// for each working directory
-	(promise, wd) => promise.catch(() => {
-		// set cwd as the current working directory
-		let cwd = wd;
+export default function readClosestSVG(id, wds, cache) {
+	return wds.reduce(
+		// for each working directory
+		(promise, wd) => promise.catch(() => {
+			// set cwd as the current working directory
+			let cwd = wd;
 
-		// if id starts with root
-		if (starts_with_root(id)) {
-			// set cwd as the root
-			cwd = '';
-		}
+			// if id starts with root
+			if (starts_with_root(id)) {
+				// set cwd as the root
+				cwd = '';
+			}
 
-		// resolve as a file using cwd/id as file
-		return resolveAsFile(path.join(cwd, id), cache)
-		// otherwise, resolve as a directory using cwd/id as dir
-		.catch(() => resolve_as_directory(path.join(cwd, id), cache))
-		// otherwise, if id does not start with root or relative
-		.catch(() => !starts_with_root_or_relative(id)
-			// resolve as a module using cwd and id
-			? resolve_as_module(cwd, id, cache)
-			: Promise.reject()
-		)
-		// otherwise, reject as id not found
-		.catch(() => Promise.reject(`${id} not found`));
-	}),
-	Promise.reject()
-).then(
-	// resolve xml contents
-	(result) => ({
-		file: result.file,
-		document: new XmlDocument(result.contents)
-	})
-);
+			// resolve as a file using cwd/id as file
+			return resolveAsFile(path.join(cwd, id), cache)
+			// otherwise, resolve as a directory using cwd/id as dir
+			.catch(() => resolve_as_directory(path.join(cwd, id), cache))
+			// otherwise, if id does not start with root or relative
+			.catch(() => !starts_with_root_or_relative(id)
+				// resolve as a module using cwd and id
+				? resolve_as_module(cwd, id, cache)
+				: Promise.reject()
+			)
+			// otherwise, reject as id not found
+			.catch(() => Promise.reject(`${id} not found`));
+		}),
+		Promise.reject()
+	).then(
+		// resolve xml contents
+		(result) => ({
+			file: result.file,
+			document: new XmlDocument(result.contents)
+		})
+	);
+}
 
 function resolveAsFile(file, cache) {
 	// if file is a file, resolve the contents of file

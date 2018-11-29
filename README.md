@@ -1,8 +1,7 @@
-# PostCSS SVG [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][postcss]
+# PostCSS SVG [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS" width="90" height="90" align="right">][postcss]
 
 [![NPM Version][npm-img]][npm-url]
-[![Linux Build Status][cli-img]][cli-url]
-[![Windows Build Status][win-img]][win-url]
+[![Build Status][cli-img]][cli-url]
 [![Support Chat][git-img]][git-url]
 
 [PostCSS SVG] lets you inline SVGs in CSS.
@@ -44,126 +43,35 @@ The location of an SVG is intelligently resolved using the
 
 ## Usage
 
-Add [PostCSS SVG] to your build tool:
+Add [PostCSS SVG] to your project:
 
 ```bash
 npm install postcss-svg --save-dev
 ```
 
-#### Node
-
 Use [PostCSS SVG] to process your CSS:
 
 ```js
-import postcssSVG from 'postcss-svg';
+const postcssSVG = require('postcss-svg');
 
-postcssSVG.process(YOUR_CSS);
+postcssSVG.process(YOUR_CSS /*, processOptions, pluginOptions */);
 ```
 
-#### PostCSS
-
-Add [PostCSS] to your build tool:
-
-```bash
-npm install postcss --save-dev
-```
-
-Use [PostCSS SVG] as a plugin:
+Or use it as a [PostCSS] plugin:
 
 ```js
-import postcss from 'gulp-postcss';
-import postcssSVG from 'postcss-svg';
+const postcss = require('postcss');
+const postcssSVG = require('postcss-svg');
 
 postcss([
-  postcssSVG(/* options */)
-]).process(YOUR_CSS);
+  postcssSVG(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
 ```
 
-#### Webpack
+[PostCSS SVG] runs in all Node environments, with special instructions for:
 
-Add [PostCSS Loader] to your build tool:
-
-```bash
-npm install postcss-loader --save-dev
-```
-
-Use [PostCSS SVG] in your Webpack configuration:
-
-```js
-import postcssSVG from 'postcss-svg';
-
-module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader', options: {
-            ident: 'postcss',
-            plugins: () => [
-              postcssSVG(/* options */)
-            ]
-          } }
-        ]
-      }
-    ]
-  }
-}
-```
-
-#### Gulp
-
-Add [Gulp PostCSS] to your build tool:
-
-```bash
-npm install gulp-postcss --save-dev
-```
-
-Use [PostCSS SVG] in your Gulpfile:
-
-```js
-import postcss from 'gulp-postcss';
-import postcssSVG from 'postcss-svg';
-
-gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
-    postcssSVG(/* options */)
-  ])
-).pipe(
-  gulp.dest('.')
-));
-```
-
-#### Grunt
-
-Add [Grunt PostCSS] to your build tool:
-
-```bash
-npm install grunt-postcss --save-dev
-```
-
-Use [PostCSS SVG] in your Gruntfile:
-
-```js
-import postcssSVG from 'postcss-svg';
-
-grunt.loadNpmTasks('grunt-postcss');
-
-grunt.initConfig({
-  postcss: {
-    options: {
-      use: [
-       postcssSVG(/* options */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
-});
-```
+| [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
+| --- | --- | --- | --- | --- | --- |
 
 ## Options
 
@@ -193,21 +101,16 @@ postcssSVG({
 })
 ```
 
-[cli-url]: https://travis-ci.org/jonathantneal/postcss-svg
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-svg.svg
-[git-url]: https://gitter.im/postcss/postcss
+[cli-url]: https://travis-ci.org/jonathantneal/postcss-svg
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
-[npm-url]: https://www.npmjs.com/package/postcss-svg
+[git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/postcss-svg.svg
-[win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-svg
-[win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-svg.svg
+[npm-url]: https://www.npmjs.com/package/postcss-svg
 
-[Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
-[Gulp PostCSS]: https://github.com/postcss/gulp-postcss
-[Modules]: https://nodejs.org/api/modules.html#modules_modules
 [PostCSS]: https://github.com/postcss/postcss
-[PostCSS Loader]: https://github.com/postcss/postcss-loader
 [PostCSS SVG]: https://github.com/jonathantneal/postcss-svg
+[Modules]: https://nodejs.org/api/modules.html#modules_modules
 [SVG Fragments]: https://css-tricks.com/svg-fragment-identifiers-work/
 [SVG Parameters]: https://tabatkins.github.io/specs/svg-params/
 [SVG Resolve Algorithm]: lib/read-closest-svg.md

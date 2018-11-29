@@ -2,12 +2,12 @@
 /* ========================================================================== */
 
 // external tooling
-const Svgo = require('svgo');
+import Svgo from 'svgo';
 
 /* Element as a data URI SVG
 /* ========================================================================== */
 
-module.exports = (element, document, opts) => {
+export default function elementAsDataURISvg(element, document, opts) {
 	// rebuild element as <svg>
 	element.name = 'svg';
 
@@ -25,8 +25,8 @@ module.exports = (element, document, opts) => {
 	return (opts.svgo
 		? new Svgo(opts.svgo).optimize(xml)
 	: Promise.resolve({ data: xml }))
-	.then(result => `data:image/svg+xml;${opts.utf8 ? `charset=utf-8,${encodeUTF8(result.data)}` : `base64,${new Buffer(result.data).toString('base64')}`}`);
-};
+	.then(result => `data:image/svg+xml;${opts.utf8 ? `charset=utf-8,${encodeUTF8(result.data)}` : `base64,${Buffer.from(result.data).toString('base64')}`}`);
+}
 
 /* Inline Tooling
 /* ========================================================================== */

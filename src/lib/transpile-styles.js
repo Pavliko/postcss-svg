@@ -1,16 +1,14 @@
-'use strict';
-
 /* Tooling
 /* ========================================================================== */
 
 // external tooling
-const parser  = require('postcss-value-parser');
-const postcss = require('postcss');
+import parser  from 'postcss-values-parser';
+import postcss from 'postcss';
 
 /* Transpile element styles with params
 /* ========================================================================== */
 
-module.exports = (element, params) => {
+export default function transpileStyles(element, params) {
 	if (hasStyleAttr(element)) {
 		// conditionally update the style attribute
 		element.attr.style = updatedStyleAttr(element.attr.style, params);
@@ -22,10 +20,10 @@ module.exports = (element, params) => {
 		let child;
 
 		while (child = element.children[++index]) {
-			module.exports(child, params);
+			transpileStyles(child, params);
 		}
 	}
-};
+}
 
 /* Inline Tooling
 /* ========================================================================== */
@@ -40,13 +38,17 @@ function updatedStyleAttr(style, params) {
 
 	// walk the declarations within the style attribute
 	styleAST.walkDecls(decl => {
+		const declAST = parser(decl.value).parse();
+
 		// update the declaration with all transpiled var()s
-		decl.value = parser(decl.value).walk(node => {
+		declAST.walk(node => {
 			// conditionally update the var()
 			if (isVarFuntion(node)) {
 				transpileVar(node, params);
 			}
-		}).toString();
+		});
+
+		decl.value = declAST.toString();
 	});
 
 	// return the updated style attribute
@@ -55,24 +57,24 @@ function updatedStyleAttr(style, params) {
 
 // whether the node is a var()
 function isVarFuntion(node) {
-	return node.type === 'function' && node.value === 'var' && node.nodes && node.nodes.length && /^--/.test(node.nodes[0].value);
+	return node.type === 'func' && node.value === 'var' && Object(node.nodes).length && /^--/.test(node.nodes[1].value);
 }
 
 // transpile var()
 function transpileVar(node, params) {
 	// css variable
-	const cssvar = node.nodes[0].value;
+	const cssvar = node.nodes[1].value;
 
 	// css variable backup value
-	const backup = node.nodes[2] && node.nodes[2].value;
+	const backup = node.nodes[3];
 
 	if (cssvar in params) {
 		// conditionally transpile the css var() function into the matched param
-		node.type = 'word';
-		node.value = params[cssvar];
+		node.replaceWith(
+			parser.word({ value: params[cssvar] })
+		);
 	} else if (backup) {
 		// conditionally transpile the css var() function into the backup value
-		node.type = 'word';
-		node.value = backup;
+		node.replaceWith(backup);
 	}
 }
