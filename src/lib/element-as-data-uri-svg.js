@@ -13,7 +13,9 @@ export default function elementAsDataURISvg(element, document, opts) {
 
 	delete element.attr.id;
 
-	element.attr.viewBox = element.attr.viewBox || document.attr.viewBox;
+	if (!element.attr.viewBox && document.attr.viewBox) {
+		element.attr.viewBox = document.attr.viewBox;
+	}
 
 	element.attr.xmlns = 'http://www.w3.org/2000/svg';
 
